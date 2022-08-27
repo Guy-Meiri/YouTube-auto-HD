@@ -1,8 +1,10 @@
 console.log("hey");
 
+function findElementById() {}
 let hasSettingsClicked = false;
+
 const settingsObserver = new MutationObserver((entries) => {
-  console.log("observing");
+  console.log("observing settings");
   if (hasSettingsClicked) return;
   for (let entry of entries) {
     if (entry.target) {
@@ -16,20 +18,26 @@ const settingsObserver = new MutationObserver((entries) => {
 const settingsBtn = document.getElementsByClassName(
   "ytp-button ytp-settings-button"
 )[0];
-const settingsButton = document.querySelector(".ytp-settings-button");
+
 settingsObserver.observe(settingsBtn, { childList: true, attributes: true });
 
-// settingsButton.click();
-// const hasQualityClicked = false;
-// const qualityButton = document.querySelector(".ytp-menuitem-label");
-// const qualityObserver = new MutationObserver((entries) => {
-//   if (hasQualityClicked) return;
-//   for (let entry of entries) {
-//     // hasQualityClicked = true;
-//     // entry.target.firstChild.click();
-//     // break;
-//     console.log(entry.target);
-//   }
-// });
+//==================
+let hasQualityClicked = false;
+const qualityObserver = new MutationObserver((entries) => {
+  console.log("observing quality");
+  if (hasQualityClicked) return;
+  for (let entry of entries) {
+    if (entry.target) {
+      console.log("quality:");
+      // const qualityDiv = entry.target.childNodes.find(x=)
+      console.log(entry.target.childNodes[3].click());
+      // entry.target.childList[3].click();
+      // hasQualityClicked = true;
+      // entry.target.click();
+      break;
+    }
+  }
+});
+const qualityElem = document.getElementsByClassName("ytp-panel-menu")[0];
 
-// qualityObserver.observe(qualityButton, { childList: true, attributes: true });
+qualityObserver.observe(qualityElem, { childList: true, attributes: true });
