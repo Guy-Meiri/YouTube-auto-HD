@@ -29,15 +29,19 @@ const qualityObserver = new MutationObserver((entries) => {
   for (let entry of entries) {
     if (entry.target) {
       console.log("quality:");
-      // const qualityDiv = entry.target.childNodes.find(x=)
-      console.log(entry.target.childNodes[3].click());
-      // entry.target.childList[3].click();
-      // hasQualityClicked = true;
-      // entry.target.click();
+      for (let child of entry.target.childNodes) {
+        for (let menuItem of child.childNodes) {
+          if (menuItem.innerHTML?.includes("Quality")) {
+            console.log(menuItem.innerHTML);
+            menuItem.click();
+          }
+        }
+      }
       break;
     }
   }
 });
 const qualityElem = document.getElementsByClassName("ytp-panel-menu")[0];
-
 qualityObserver.observe(qualityElem, { childList: true, attributes: true });
+
+// 'ytp-panel ytp-quality-menu'
