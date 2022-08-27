@@ -1,0 +1,13 @@
+{
+  "name": "Youtube Auto HD",
+  "description": "changes youtube quality to HD automatically",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["script.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
